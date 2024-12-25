@@ -32,7 +32,6 @@ class MyNavigationDrawer extends StatelessWidget {
         ),
         child: Column(
           children: <Widget>[
-            SizedBox(height: 30), // Adjust as needed
             Text(
               translatedStrings[currentLanguage]!['appName'] ??
                   AppStrings.appName, // Replace with your app name
@@ -117,7 +116,7 @@ class MyNavigationDrawer extends StatelessWidget {
                 launch(dotenv.get('APP_LINK'));
               },
             ),
-             ListTile(
+            ListTile(
               leading: Icon(Icons.thumb_up, color: Colors.white),
               title: Text(
                 translatedStrings[currentLanguage]!['likeus'] ??
