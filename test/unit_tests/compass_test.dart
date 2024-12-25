@@ -12,11 +12,31 @@ class MockCompassStream extends Mock implements Stream<CompassEvent> {}
 
 void main() {
   group('CompassWidget Tests', () {
-    testWidgets('CompassWidget updates direction when stream emits',
-        (WidgetTester tester) async {
+    //CompassWidget updates direction when stream emits
+    testWidgets('Test 2.1', (WidgetTester tester) async {
       await tester.pumpWidget(MaterialApp(home: CompassWidget()));
 
-      // Initial state where there should be an CircularProgressIndicator
+      expect(find.byType(Image), findsNothing);
+
+      await tester.pump();
+
+      await tester.pump();
+    });
+
+    testWidgets('Test 2.2', (WidgetTester tester) async {
+      await tester.pumpWidget(MaterialApp(home: CompassWidget()));
+
+      expect(find.byType(CircularProgressIndicator), findsOneWidget);
+
+      await tester.pump();
+
+      await tester.pump();
+    });
+
+    testWidgets('Test 2.3', (WidgetTester tester) async {
+      await tester.pumpWidget(MaterialApp(home: CompassWidget()));
+
+      //find both
       expect(find.byType(CircularProgressIndicator), findsOneWidget);
       expect(find.byType(Image), findsNothing);
 

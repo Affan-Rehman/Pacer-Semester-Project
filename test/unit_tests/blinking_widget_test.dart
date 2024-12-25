@@ -7,8 +7,8 @@ import 'package:pacer/widgets/blinking_widget.dart';
 
 void main() {
   group('BlinkingWidget Tests', () {
-    testWidgets('Widget blinks when isBelowRequirement is true',
-        (WidgetTester tester) async {
+    //Widget blinks when isBelowRequirement is true
+    testWidgets('Test 1.1', (WidgetTester tester) async {
       await tester.pumpWidget(const MaterialApp(
         home: BlinkingWidget(
           isBelowRequirement: true,
@@ -26,9 +26,8 @@ void main() {
 
       expect(endAnimationColor, equals(initialColor));
     });
-
-    testWidgets('Widget does not blink when isBelowRequirement is false',
-        (WidgetTester tester) async {
+    //Widget does not blink when isBelowRequirement is false
+    testWidgets('Test 1.2', (WidgetTester tester) async {
       await tester.pumpWidget(const MaterialApp(
         home: BlinkingWidget(
           isBelowRequirement: false,

@@ -5,25 +5,53 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:pacer/widgets/drawer.dart';
 
 void main() {
-  testWidgets('Navigation Drawer test', (WidgetTester tester) async {
-    Widget testWidget = MaterialApp(
-      home: Scaffold(
-        body: StatefulBuilder(
-          builder: (BuildContext context, StateSetter setState) {
-            return MyNavigationDrawer("en", 0);
-          },
+  group('Navigation Drawer Tests', () {
+    late Widget testWidget;
+
+    setUp(() {
+      testWidget = MaterialApp(
+        home: Scaffold(
+          body: StatefulBuilder(
+            builder: (BuildContext context, StateSetter setState) {
+              return MyNavigationDrawer("en", 0);
+            },
+          ),
         ),
-      ),
-    );
+      );
+    });
 
-    await tester.pumpWidget(testWidget);
+    testWidgets('Test 3.1: More Apps button exists',
+        (WidgetTester tester) async {
+      await tester.pumpWidget(testWidget);
+      expect(find.text('More Apps'), findsOneWidget);
+      print('--> More Apps Test Passed Successfully!');
+    });
 
-    expect(find.text('More Apps'), findsOneWidget);
-    expect(find.text('Share App'), findsOneWidget);
-    expect(find.text('Feedback'), findsOneWidget);
-    expect(find.text('Privacy Policy'), findsOneWidget);
-    expect(find.text('Help'), findsOneWidget);
+    testWidgets('Test 3.2: Share App button exists',
+        (WidgetTester tester) async {
+      await tester.pumpWidget(testWidget);
+      expect(find.text('Share App'), findsOneWidget);
+      print('--> Share App Test Passed Successfully!');
+    });
 
-    print('--> Drawer Test Passed Successfully!');
+    testWidgets('Test 3.3: Feedback button exists',
+        (WidgetTester tester) async {
+      await tester.pumpWidget(testWidget);
+      expect(find.text('Feedback'), findsOneWidget);
+      print('--> Feedback Test Passed Successfully!');
+    });
+
+    testWidgets('Test 3.4: Privacy Policy button exists',
+        (WidgetTester tester) async {
+      await tester.pumpWidget(testWidget);
+      expect(find.text('Privacy Policy'), findsOneWidget);
+      print('--> Privacy Policy Test Passed Successfully!');
+    });
+
+    testWidgets('Test 3.5: Help button exists', (WidgetTester tester) async {
+      await tester.pumpWidget(testWidget);
+      expect(find.text('Help'), findsOneWidget);
+      print('--> Help Test Passed Successfully!');
+    });
   });
 }
